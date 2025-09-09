@@ -12,23 +12,21 @@ const config: Config = {
 		extend: {
 			screens: {
 				xs: "475px",
+				sm: "640px",
+				md: "768px",
+				lg: "1024px",
+				xl: "1280px",
 			},
 			colors: {
-				primary: {
-					"100": "#FFE8F0",
-					DEFAULT: "#EE2B69",
-				},
+				primary: "#EE2B69",       // main color
+				primary100: "#FFE8F0",    // light variant
 				secondary: "#FBE843",
-				black: {
-					"100": "#333333",
-					"200": "#141413",
-					"300": "#7D8087",
-					DEFAULT: "#000000",
-				},
-				white: {
-					"100": "#F7F7F7",
-					DEFAULT: "#FFFFFF",
-				},
+				black: "#000000",
+				black100: "#333333",
+				black200: "#141413",
+				black300: "#7D8087",
+				white: "#FFFFFF",
+				white100: "#F7F7F7",
 			},
 			fontFamily: {
 				"work-sans": ["var(--font-work-sans)"],
