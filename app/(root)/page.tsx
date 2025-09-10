@@ -1,40 +1,45 @@
 import StartupCard from "@/components/StartupCard";
 import SearchForm from "../../components/SearchForm";
+import {client} from "@/sanity/lib/client"
+import { STARTUPS_QUERY } from "@/lib/queries";
 
 export default async function Home({searchParams}: {searchParams: Promise<{query: string}>}){
   const query = (await searchParams).query;
-  const posts =[
-    {
-      _createdAt: new Date(),
-      views: 100,
-      author: {_id:1, name: 'John Doe'},
-      _id:1,
-      description: 'This is a description of the startup',
-      image: 'https://images.unsplash.com/photo-1575936123452-b67c3203c357',
-      category: 'Technology',
-      title: 'We robots',
-    },
-    {
-      _createdAt: new Date(),
-      views: 100,
-      author: {_id:2, name: 'Lim'},
-      _id:2,
-      description: 'This is a description of the startup',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppRaCxS9tzH6NC3wA0_haqm8tt06WV4g4MA&s',
-      category: 'Health',
-      title: 'Couscous',
-    },   
-    {
-      _createdAt: new Date(),
-      views: 100,
-      author: {_id:3,name: 'McDonalds'},
-      _id:3,
-      description: 'This is a description of the startup',
-      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppRaCxS9tzH6NC3wA0_haqm8tt06WV4g4MA&s',
-      category: 'Health',
-      title: 'KFC',
-    }
-  ]
+
+  const posts = await client.fetch(STARTUPS_QUERY);
+  console.log(JSON.stringify(posts,null,2));
+  // const posts =[
+  //   {
+  //     _createdAt: new Date(),
+  //     views: 100,
+  //     author: {_id:1, name: 'John Doe'},
+  //     _id:1,
+  //     description: 'This is a description of the startup',
+  //     image: 'https://images.unsplash.com/photo-1575936123452-b67c3203c357',
+  //     category: 'Technology',
+  //     title: 'We robots',
+  //   },
+  //   {
+  //     _createdAt: new Date(),
+  //     views: 100,
+  //     author: {_id:2, name: 'Lim'},
+  //     _id:2,
+  //     description: 'This is a description of the startup',
+  //     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppRaCxS9tzH6NC3wA0_haqm8tt06WV4g4MA&s',
+  //     category: 'Health',
+  //     title: 'Couscous',
+  //   },   
+  //   {
+  //     _createdAt: new Date(),
+  //     views: 100,
+  //     author: {_id:3,name: 'McDonalds'},
+  //     _id:3,
+  //     description: 'This is a description of the startup',
+  //     image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppRaCxS9tzH6NC3wA0_haqm8tt06WV4g4MA&s',
+  //     category: 'Health',
+  //     title: 'KFC',
+  //   }
+  // ]
 
 
   return(
