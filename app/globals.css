@@ -14,10 +14,49 @@
     --radius: 0.5rem;
     --color-primary: #EE2B69;
     --color-primary-100: #FFE8F0;
+    a {
+      @apply no-underline text-inherit;
+    }
   }
 }
 
 @layer components {
+  .flex-between {
+    @apply flex justify-between items-center;
+  }
+
+  .text-30-extrabold {
+    @apply text-[30px] font-extrabold text-white;
+  }
+
+  .text-30-bold {
+    @apply text-[30px] font-bold text-black;
+  }
+
+  .text-30-semibold {
+    @apply font-semibold text-[30px] text-black;
+  }
+
+  .text-26-semibold {
+    @apply font-semibold text-[26px] text-black;
+  }
+
+  .text-24-black {
+    @apply text-[24px] font-black text-black;
+  }
+
+  .text-20-medium {
+    @apply font-medium text-[20px] text-black;
+  }
+
+  .text-16-medium {
+    @apply font-medium text-[16px] text-black;
+  }
+
+  .text-14-normal {
+    @apply font-normal text-sm text-white;
+  }
+
   .heading {
     @apply uppercase bg-black px-6 py-3 text-white text-[36px] leading-[46px] max-w-5xl text-center my-5;
   }
@@ -34,6 +73,9 @@
   .pink_container {
     @apply w-full min-h-[530px] flex flex-col items-center justify-center px-6 py-10;
     background-color: var(--color-primary);
+  }
+  .section_container {
+    @apply px-6 py-10 max-w-7xl mx-auto;
   }
 
   .search-form {
@@ -60,6 +102,42 @@
     background-position: center;
     background-repeat: repeat-x;
   }
+
+  .card_grid {
+    @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+  }
+
+  .startup-card {
+    @apply bg-white border-[5px] border-black py-6 px-5 rounded-[22px] transition-all duration-500;
+  
+    /* Custom shadows from your tailwind.config.ts */
+    box-shadow: 2px 2px 0px 2px rgb(0, 0, 0); /* corresponds to shadow-200 */
+  
+    /* Hover states need plain CSS in v4 */
+    &:hover {
+      border-color: var(--color-primary); /* primary.DEFAULT */
+      background-color: var(--color-primary-100); /* primary.100 */
+      box-shadow: 2px 2px 0px 2px rgb(238, 43, 105); /* shadow-300 */
+    }
+  }
+
+  .startup-card_date {
+    @apply font-medium text-[16px] px-4 py-2 rounded-full;
+    background-color: var(--color-primary); /* primary-100 */
+  }
+  
+  .group:hover .startup-card_date {
+    background-color: var(--color-primary-100); /* white-100 */
+  }
+  
+  .startup-card_desc {
+    @apply font-normal text-[16px] line-clamp-2 my-3 text-black break-all;
+  }
+
+  .startup-card_img {
+    @apply w-full h-[164px] rounded-[10px] object-cover;
+  }
+  
 }
 
 
