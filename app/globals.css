@@ -3,7 +3,7 @@
 @plugin "tailwindcss-animate";
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -14,6 +14,7 @@
     --radius: 0.5rem;
     --color-primary: #EE2B69;
     --color-primary-100: #FFE8F0;
+    --color-secondary: #FBE843;
     a {
       @apply no-underline text-inherit;
     }
@@ -88,6 +89,28 @@
   
   .search-btn {
     @apply size-[50px] rounded-full bg-black flex justify-center items-center;
+  }
+
+  .section_container {
+    @apply px-6 py-10 max-w-7xl mx-auto;
+  }
+
+  .tag {
+    @apply px-6 py-3 font-bold rounded-sm uppercase relative;
+    background-color: var(--color-secondary);
+  }
+
+  .tag-tri {
+    @apply before:content-[''] before:absolute before:top-2 before:left-2 before:border-t-[10px] before:border-t-black before:border-r-[10px] before:border-r-transparent after:content-[''] after:absolute after:bottom-2 after:right-2 after:border-b-[10px] after:border-b-black after:border-l-[10px] after:border-l-transparent;
+  }
+
+  .category-tag {
+    @apply font-medium text-[16px] px-4 py-2 rounded-full;
+    background-color: var(--color-primary);
+  }
+
+  .no-result {
+    @apply text-black text-sm font-normal;
   }
 
   .pattern {
