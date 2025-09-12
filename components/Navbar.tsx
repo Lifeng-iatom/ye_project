@@ -1,8 +1,6 @@
-import React from "react";
+
 import Link from "next/link";
-import Image from "next/image";
 import {auth, signOut, signIn} from "@/auth"
-import { redirect } from "next/dist/server/api-utils";
 
 const Navbar = async() =>{
     const session = await auth();
@@ -11,7 +9,8 @@ const Navbar = async() =>{
         <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
             <nav className="flex justify-between items-center text-black">
                 <Link href="/">
-                    <Image src="/logo.png" alt="logo" width={144} height={30} />
+                    <img src="/logo.png" alt="logo" width="144" height="30" />
+
                 </Link>
                 <div className="flex items-center gap-5">
                     {session && session?.user ? (
@@ -21,7 +20,7 @@ const Navbar = async() =>{
                             </Link>
                             <form action={async () => {
                                 "use server";
-                                await signOut({ redirect: "/" });
+                                await signOut({ redirectTo: "/" });
                      
                             }}>
                                 <button type="submit">Logout</button>
