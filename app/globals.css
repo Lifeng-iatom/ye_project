@@ -14,7 +14,9 @@
     --radius: 0.5rem;
     --color-primary: #EE2B69;
     --color-primary-100: #FFE8F0;
+    --color-primary-200: #F79E9E;
     --color-secondary: #FBE843;
+  
     a {
       @apply no-underline text-inherit;
     }
@@ -161,6 +163,28 @@
     @apply w-full h-[164px] rounded-[10px] object-cover;
   }
   
+  .view_skeleton {
+    @apply bg-zinc-400 h-10 w-24 rounded-lg fixed bottom-3 right-3;
+  }
+
+  .view-container {
+    @apply flex justify-end items-center mt-5 fixed bottom-3 right-3;
+  }
+
+  .view-text {
+    @apply font-medium text-[16px] px-4 py-2 rounded-lg capitalize;
+    background-color: var(--color-primary-200);
+  }
+
+  .ping{
+    @apply absolute inline-flex h-full w-full animate-ping rounded-full opacity-75;
+    background-color: var(--color-primary);
+  }
+  .ping-fix{
+    @apply relative inline-flex size-[11px] rounded-full;
+    background-color: var(--color-primary);
+  }
+
 }
 
 
