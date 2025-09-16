@@ -2,22 +2,21 @@
 import React, { useActionState, useState } from 'react'
 import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
-
 import MDEditor from "@uiw/react-md-editor";
 import { Button } from './ui/button';
 import { Send } from 'lucide-react';
 import { formSchema } from '@/lib/validation';
 import { z } from "zod";
 import {toast} from "./ui/sonner";
-
-
-
+import { createPitch } from '@/lib/action';
+import { useRouter } from 'next/navigation';
 
 
 const StartupFrom = () => {
 
     const[errors, setErrors] = useState<Record<string,string>>({})
     const [pitch, setPitch] = useState("");
+    const router = useRouter();
 
     const handleFormSubmit = async (prevState:any, formData:FormData) =>{
         try {
@@ -28,22 +27,22 @@ const StartupFrom = () => {
               link: formData.get("link") as string,
               pitch,
             };
+
+            console.log(formValues);
       
             await formSchema.parseAsync(formValues);
             
+            
       
-            // const result = await createPitch(prevState, formData, pitch);
+            const result = await createPitch(prevState, formData, pitch);
       
-            // if (result.status == "SUCCESS") {
-            //   toast({
-            //     title: "Success",
-            //     description: "Your startup pitch has been created successfully",
-            //   });
+            if (result.status == "SUCCESS") {
+              toast.success("Your startup pitch has been created successfully")
       
-            //   router.push(`/startup/${result._id}`);
-            // }
+              router.push(`/startup/${result._id}`);
+            }
       
-            // return result;
+            return result;
           } catch (error) {
             if (error instanceof z.ZodError) {
               const fieldErorrs = error.flatten().fieldErrors;
