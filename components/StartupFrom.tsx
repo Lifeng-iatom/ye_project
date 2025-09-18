@@ -28,7 +28,6 @@ const StartupFrom = () => {
               pitch,
             };
 
-            console.log(formValues);
       
             await formSchema.parseAsync(formValues);
             
